@@ -17,7 +17,7 @@ export class ApiService {
   }
 
   fetchPrinters(page: number, size: number, sortBy: string, sortDir: string) {
-    return this.http.get(this.API_URL + '/printer');
+    return this.http.get(this.API_URL + '/printers');
   }
 
   fetchPrinterById(printerId: string) {
@@ -25,7 +25,7 @@ export class ApiService {
   }
 
   fetchSupplies(page: number, size: number, sortBy: string, sortDir: string) {
-    return this.http.get(this.API_URL + '/supply');
+    return this.http.get(this.API_URL + '/supplies');
   }
 
   fetchSupplyById(supplyId: string) {

@@ -1,7 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ApiService} from "../shared/services/api.service";
 import {Printer} from "../shared/models/printer.model";
 import {Supply} from "../shared/models/supply.model";
+// import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
+//
+// export interface DialogData {
+//   name: string;
+//   description: string;
+// }
 
 @Component({
   selector: 'app-table-list',
@@ -15,6 +21,18 @@ export class TableListComponent implements OnInit {
   constructor(
     private apiService: ApiService
   ) { }
+
+  // openDialog(printer: Printer): void {
+  //   const dialogRef = this.dialog.open(PrinterDialog, {
+  //     width: '250px',
+  //     data: {name: printer.model, description: printer.description}
+  //   });
+  //
+  //   dialogRef.afterClosed().subscribe(result => {
+  //     console.log('The dialog was closed');
+  //     // this.printer = result;
+  //   });
+  // }
 
   ngOnInit() {
     this.apiService.fetchPrinters(0, 25, 'MODEL', 'ASC').subscribe((printers: Printer[]) => {
@@ -41,3 +59,19 @@ export class TableListComponent implements OnInit {
     }
   }
 }
+
+// @Component({
+//   selector: 'printer-dialog',
+//   templateUrl: 'printer-dialog.html',
+// })
+// export class PrinterDialog {
+//
+//   constructor(
+//     public dialogRef: MatDialogRef<PrinterDialog>,
+//     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+//
+//   onNoClick(): void {
+//     this.dialogRef.close();
+//   }
+//
+// }
