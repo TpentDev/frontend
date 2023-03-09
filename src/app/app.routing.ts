@@ -3,19 +3,32 @@ import { CommonModule, } from '@angular/common';
 import { BrowserModule  } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { PrintersComponent } from "./domain-modules/printers/printers.component";
+import { SuppliesComponent } from "./domain-modules/supplies/supplies.component";
+import {DashboardComponent} from "./layout/dashboard/dashboard.component";
 
 const routes: Routes =[
   {
     path: '',
-    redirectTo: 'dashboard',
-    pathMatch: 'full',
-  }, {
-    path: '',
-    component: AdminLayoutComponent,
+    component: DashboardComponent
+  },
+  {
+    path: 'dashboard',
+    component: DashboardComponent
+  },
+ {
+    path: 'printers',
+    component: PrintersComponent,
     children: [{
       path: '',
-      loadChildren: () => import('./layouts/admin-layout/admin-layout.module').then(m => m.AdminLayoutModule)
+      loadChildren: () => import('./domain-modules/printers/printers.module').then(m => m.PrintersModule)
+    }]
+  }, {
+    path: 'supplies',
+    component: SuppliesComponent,
+    children: [{
+      path: '',
+      loadChildren: () => import('./domain-modules/supplies/supplies.module').then(m => m.SuppliesModule)
     }]
   }
 ];
